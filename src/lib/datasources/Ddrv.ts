@@ -99,7 +99,12 @@ export class Ddrv extends Datasource {
           'Content-Type': 'application/json',
         },
       })
-        .then((r) => r.json())
+        .then((r) => {
+          if (r.status === 404) {
+            res(0);
+          }
+          return r.json();
+        })
         .then((j) => {
           if (j.error) {
             this.logger.error(`${j.error}: ${j.message}`);
