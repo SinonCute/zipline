@@ -103,7 +103,7 @@ async function start() {
       data: {
         thumbnail: {
           create: {
-            name: `.thumb-${file.id}.jpg`,
+            name: `thumb-${file.id}.jpg`,
           },
         },
       },
