@@ -100,8 +100,8 @@ export class Ddrv extends Datasource {
         },
       })
         .then((r) => {
-          if (r.status === 404) {
-            res(0);
+          if (r.status != 200) {
+            return res(0);
           }
           return r.json();
         })
