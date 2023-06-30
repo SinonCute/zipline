@@ -51,7 +51,7 @@ const validator = s.object({
   }),
   datasource: s
     .object({
-      type: s.enum('local', 's3', 'supabase').default('local'),
+      type: s.enum('local', 's3', 'supabase', 'ddrv').default('local'),
       local: s
         .object({
           directory: s.string.default(resolve('./uploads')).transform((v) => resolve(v)),
@@ -72,6 +72,12 @@ const validator = s.object({
       supabase: s.object({
         url: s.string,
         key: s.string,
+        bucket: s.string,
+      }).optional,
+      ddrv: s.object({
+        url: s.string,
+        key: s.string,
+        parrent_bucket: s.string,
         bucket: s.string,
       }).optional,
     })
@@ -266,6 +272,19 @@ export default function validate(config): Config {
         if (!validated.datasource.supabase.url) errors.push('datasource.supabase.url is a required field');
         if (!validated.datasource.supabase.bucket)
           errors.push('datasource.supabase.bucket is a required field');
+        if (errors.length) throw { errors };
+
+        break;
+      }
+      case 'ddrv': {
+        const errors = [];
+
+        if (!validated.datasource.ddrv.url) errors.push('datasource.ddrv.url is a required field');
+        if (!validated.datasource.ddrv.parrent_bucket)
+          errors.push('datasource.ddrv.parrent_bucket is a required field');
+        if (!validated.datasource.ddrv.bucket) errors.push('datasource.ddrv.bucket is a required field');
+        if (!validated.datasource.ddrv.key) errors.push('datasource.ddrv.key is a required field');
+
         if (errors.length) throw { errors };
 
         break;

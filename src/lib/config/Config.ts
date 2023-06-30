@@ -20,10 +20,11 @@ export interface ConfigCompression {
 }
 
 export interface ConfigDatasource {
-  type: 'local' | 's3' | 'supabase';
+  type: 'local' | 's3' | 'supabase' | 'ddrv';
   local: ConfigLocalDatasource;
   s3?: ConfigS3Datasource;
   supabase?: ConfigSupabaseDatasource;
+  ddrv?: ConfigDdrv;
 }
 
 export interface ConfigLocalDatasource {
@@ -44,6 +45,13 @@ export interface ConfigS3Datasource {
 export interface ConfigSupabaseDatasource {
   url: string;
   key: string;
+  bucket: string;
+}
+
+export interface ConfigDdrv {
+  url: string;
+  key: string;
+  parrent_bucket: string;
   bucket: string;
 }
 

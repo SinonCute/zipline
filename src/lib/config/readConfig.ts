@@ -89,6 +89,11 @@ export default function readConfig() {
     map('DATASOURCE_SUPABASE_KEY', 'string', 'datasource.supabase.key'),
     map('DATASOURCE_SUPABASE_BUCKET', 'string', 'datasource.supabase.bucket'),
 
+    map('DATASOURCE_DDRV_URL', 'string', 'datasource.ddrv.url'),
+    map('DATASOURCE_DDRV_KEY', 'string', 'datasource.ddrv.key'),
+    map('DATASOURCE_DDRV_PARRENT_BUCKET', 'string', 'datasource.ddrv.parrent_bucket'),
+    map('DATASOURCE_DDRV_BUCKET', 'string', 'datasource.ddrv.bucket'),
+
     map('UPLOADER_DEFAULT_FORMAT', 'string', 'uploader.default_format'),
     map('UPLOADER_ROUTE', 'string', 'uploader.route'),
     map('UPLOADER_LENGTH', 'number', 'uploader.length'),
