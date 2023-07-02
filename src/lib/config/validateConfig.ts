@@ -197,6 +197,7 @@ const validator = s.object({
       headless: s.boolean.default(false),
       default_avatar: s.string.nullable.default(null),
       robots_txt: s.boolean.default(false),
+      thumbnails: s.boolean.default(false),
     })
     .default({
       invites: false,
@@ -207,6 +208,7 @@ const validator = s.object({
       headless: false,
       default_avatar: null,
       robots_txt: false,
+      thumbnails: false,
     }),
   chunks: s
     .object({
